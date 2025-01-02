@@ -1,21 +1,21 @@
-import { useState } from "react";
-import Counter from "./components/Counter";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Layout from "./layouts/Layout"
+import Home from "./pages/Home"
+import CreateArticle from "./pages/CreateArticle"
+
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const [counter2, setCounter2] = useState(0);
-  
-  const handleClick = () => {
-    setCounter(counter + 1);
-  }
-  const handleClick2 = () => {
-    setCounter2(counter2 + 1);
-  }
 
   return (
     <>
-       <Counter name="Compteur A" cpt={counter} hc={handleClick}/>
-       <Counter name="Compteur B" cpt={counter2} hc={handleClick2}/>
+       <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/create" element={<CreateArticle />} />
+            </Route>
+          </Routes>
+       </BrowserRouter>
     </>
   )
 }
