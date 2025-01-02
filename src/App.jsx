@@ -1,24 +1,21 @@
 import { useState } from "react";
+import Counter from "./components/Counter";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [counter2, setCounter2] = useState(0);
+  
   const handleClick = () => {
     setCounter(counter + 1);
+  }
+  const handleClick2 = () => {
+    setCounter2(counter2 + 1);
   }
 
   return (
     <>
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl">Counter : {counter}</h1>
-          <button 
-            onClick={handleClick}
-            className="bg-blue-500 
-            hover:bg-blue-700
-            text-white 
-            font-bold 
-            text-2xl
-            py-2 px-8 rounded">+</button>
-        </div>
+       <Counter name="Compteur A" cpt={counter} hc={handleClick}/>
+       <Counter name="Compteur B" cpt={counter2} hc={handleClick2}/>
     </>
   )
 }
